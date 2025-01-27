@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #f8f9fa;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+        .header span {
+            font-size: 18px;
+        }
+        .order-list {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f9f9f9;
+            display: none;
+        }
+        .order-item {
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .order-item:hover {
+            background-color: #f1f1f1;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product h2 {
+            margin: 0 0 8px;
+        }
+        .product p {
+            margin: 0 0 16px;
+        }
+        .buy-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buy-btn:hover {
+            background-color: #218838;
+        }
+        .form-page {
+            display: none;
+            margin: 20px auto;
+            width: 50%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-page.active {
+            display: block;
+        }
+        .form-page input[type="text"],
+        .form-page input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-page button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-page button:hover {
+            background-color: #0056b3;
+        }
+        .order-details {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span>Osaka Gaming Shop</span>
+        <button onclick="toggleOrderList()">My Orders</button>
+    </div>
+
+    <div id="productPage">
+        <h1>Products</h1>
+
+        <div class="product">
+            <h2>Diamond 25</h2>
+            <p>Price: 25Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 25', 25)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 50</h2>
+            <p>Price: 45Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 50', 45)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 115</h2>
+            <p>Price: 90Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 115', 90)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 240</h2>
+            <p>Price: 170Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 240', 170)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 355</h2>
+            <p>Price: 255Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 355', 255)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 505</h2>
+            <p>Price: 355Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 505', 355)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 610</h2>
+            <p>Price: 420Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 610', 420)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 850</h2>
+            <p>Price: 580Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 850', 580)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 1090</h2>
+            <p>Price: 745Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 1090', 745)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 1240</h2>
+            <p>Price: 840Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 1240', 840)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Diamond 1720</h2>
+            <p>Price: 1160Taka</p>
+            <button class="buy-btn" onclick="showForm('Diamond 1720', 1160)">Buy</button>
+        </div>
+
+        <div class="product">
+            <h2>Weekly</h2>
+            <p>Price: 170Taka</p>
+            <button class="buy-btn" onclick="showForm('Weekly', 170)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Weekly lite</h2>
+            <p>Price: 50Taka</p>
+            <button class="buy-btn" onclick="showForm('Weekly lite', 50)">Buy</button>
+        </div>
+        <div class="product">
+            <h2>Monthly </h2>
+            <p>Price: 820Taka</p>
+            <button class="buy-btn" onclick="showForm('Monthly', 820)">Buy</button>
+        </div>
+        <div class="header">
+            <span>Contact us: 01872537867<br>Whatsapp Number: 01872537867<br>Telegram Number: 01872537867</bar></span>
+            <button onclick="toggleOrderList()">
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- My Orders Section -->
+    <div class="order-list" id="orderListContainer"></div>
+
+    <div class="form-page" id="buyForm">
+        <h2>Buy Product<br>Bkash and Nagad Number 01872537867<br></h2>
+        <form id="purchaseForm">
+            <label for="uid">User ID:</label><br>
+            <input type="text" id="uid" name="uid" required><br>
+
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="transaction">Transaction Number:</label><br>
+            <input type="text" id="transaction" name="transaction" required><br>
+
+            <label for="productName">Product Name:</label><br>
+            <input type="text" id="productName" name="productName" readonly><br>
+
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" readonly><br>
+
+            <label for="paymentMethod">Payment Method:</label><br>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="bKash">bKash</option>
+                <option value="Nagad">Nagad</option>
+            </select><br>
+
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+
+    <div id="orderDetailsPage" class="order-details" style="display:none;">
+        <h3>Your Order Details:</h3>
+        <div id="orderSummary"></div>
+        <button onclick="goBackToProducts()">Back to Products</button>
+    </div>
+
+    <script>
+        function showForm(productName, price) {
+            document.getElementById('productName').value = productName;
+            document.getElementById('price').value = price;
+            document.getElementById('buyForm').classList.add('active');
+            document.getElementById('productPage').style.display = 'none';
+        }
+
+        document.getElementById('purchaseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const uid = document.getElementById('uid').value;
+            const name = document.getElementById('name').value;
+            const transaction = document.getElementById('transaction').value;
+            const productName = document.getElementById('productName').value;
+            const price = document.getElementById('price').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            const order = { uid, name, transaction, productName, price, paymentMethod, status: "Pending" };
+
+            // Save the order in localStorage
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            alert("Order saved successfully!");
+
+            // Show order details and hide product page
+            document.getElementById('buyForm').classList.remove('active');
+            document.getElementById('productPage').style.display = 'none';
+            showOrderDetails(order);
+
+            // Update the order list
+            updateOrderList();
+        });
+
+        function showOrderDetails(order) {
+            const orderSummary = document.getElementById('orderSummary');
+            orderSummary.innerHTML = `
+                <p><strong>Product Name:</strong> ${order.productName}</p>
+                <p><strong>Price:</strong> $${order.price}</p>
+                <p><strong>User ID:</strong> ${order.uid}</p>
+                <p><strong>Name:</strong> ${order.name}</p>
+                <p><strong>Transaction Number:</strong> ${order.transaction}</p>
+                <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+                <p><strong>Status:</strong> ${order.status}</p>
+            `;
+            document.getElementById('orderDetailsPage').style.display = 'block';
+        }
+
+        function goBackToProducts() {
+            document.getElementById('orderDetailsPage').style.display = 'none';
+            document.getElementById('productPage').style.display = 'block';
+        }
+
+        function updateOrderList() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderListContainer = document.getElementById('orderListContainer');
+            orderListContainer.innerHTML = '';
+
+            orders.forEach((order, index) => {
+                const orderItem = document.createElement('div');
+                orderItem.classList.add('order-item');
+                orderItem.textContent = `Order #${index + 1} - ${order.productName} - $${order.price}`;
+                orderItem.onclick = function() {
+                    showOrderDetails(order);
+                };
+                orderListContainer.appendChild(orderItem);
+            });
+        }
+
+        // Function to toggle the visibility of the order list
+        function toggleOrderList() {
+            const orderList = document.getElementById('orderListContainer');
+            orderList.style.display = orderList.style.display === 'block' ? 'none' : 'block';
+            updateOrderList(); // Update the order list every time it is toggled
+        }
+
+        // Load the order list when the page loads
+        window.onload = function() {
+            updateOrderList();
+        }
+    </script>
+
+</body>
+</html>
